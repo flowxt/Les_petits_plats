@@ -1,0 +1,183 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header{
+    background: url(../media/background/background.png) center/cover;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.logo{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    width: 207px;
+    height: 60px;
+    z-index: 1000;
+    
+}
+h1{
+    color: #FFD15B;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    font-family: 'anton', sans-serif;
+   
+}
+.app{
+    text-align: center;
+}
+.appinput {
+    position: relative;
+}
+.search-bar{
+    width: 100%;
+    margin-top: 30px;
+    min-width: 800px;
+    
+    height: 50px;
+    
+    border-radius: 10px;
+    position: relative;
+}
+.number{
+    margin-top: 20px;
+    margin-right: 5px;
+}
+
+.search-glass {
+    width: 40px; /* Ajustez la taille de l'icône */
+    height: 40px; /* Ajustez la taille de l'icône */
+    background: black; /* Couleur de fond de l'icône */
+    color: lightgrey; /* Couleur du texte de l'icône */
+    position: absolute; /* Positionne l'icône par rapport à .app */
+    right: 5px; /* Positionne l'icône à droite de l'input */
+    top: 69%; /* Centre l'icône verticalement */
+    transform: translateY(-50%); /* Ajuste la position pour un centrage parfait */
+    pointer-events: none; /* Permet d'interagir avec l'input sans interférer avec l'icône */
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+}
+
+img {
+    width: 380px;
+    height: 253px;
+    object-fit: cover;
+    border-radius: 20px 20px 0 0;
+}
+
+h2{
+    font-family: 'anton', sans-serif;
+    margin-bottom: 10px;
+}
+
+h3{
+    color: #7A7A7A;
+    text-transform: uppercase;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+li{
+    list-style-type: none;
+   padding-bottom: 10px;
+   margin-top: 10px;
+  
+    font-size: 1rem;
+}
+ul{
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-right: 5px;
+}
+p.description {
+    display: -webkit-box;           /* Utilise un conteneur flexible */
+    -webkit-box-orient: vertical;   /* Définit l'orientation verticale */
+    -webkit-line-clamp: 4;          /* Affiche jusqu'à 5 lignes */
+    overflow: hidden;               /* Cache le texte excédentaire */
+    text-overflow: ellipsis;        /* Ajoute des points de suspension */
+    margin-bottom: 20px;
+   
+  }
+
+  main{
+    background: lightgrey;
+  }
+#recipes-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background: lightgrey;
+}
+
+.filters{
+    display: flex;
+    justify-content: space-between;
+}
+.filter1{
+  height: 40px;
+   margin: 20px 30px;
+   width: 200px;
+   border: 1px solid black;
+  
+}
+#nbrecipe{
+    font-size: 1.5rem;
+    font-family: 'anton', sans-serif;
+    color: black;
+    margin: 20px 30px;
+    padding-top: 30px;
+}
+
+.recipe-card {
+    flex: 1 1 calc(33% - 16px); /* 25% pour 4 par ligne moins la marge */
+    max-width: calc(33% - 16px); /* Empêche les cartes de devenir trop larges */
+    box-sizing: border-box;
+    position: relative;
+    border-radius: 20px;
+    gap: 10px;
+    margin-bottom: 30px;
+    background: white;
+    height: 731px;
+    width: 100%;
+    max-width: 380px;   
+    margin-top: 40px;
+    
+}
+
+.recipe-time{
+    display: flex;
+    position: absolute;
+    top: 15px;
+    left: 270px;
+    background: #FFD15B;
+    width: 70px;
+    height: 30px;
+    border-radius: 20px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.recipe-content{
+    margin: 20px 40px;
+    font-family: 'manrope', sans-serif;
+    font-size: 0.9rem;
+
+}
+
+.unit{
+    color: #7A7A7A;
+  
+}

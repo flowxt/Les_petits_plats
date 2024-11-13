@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./style/style.css" />
+    <title>Les petits plats</title>
+  </head>
+  <body>
+    <header>
+      <img
+        src="./media/logo/logo.png"
+        class="logo"
+        alt="Logo Les petits plats"
+      />
+      <div class="app">
+        <h1>
+          Cherchez parmi plus de 1500 recettes<br />
+          du quotidien, simples et délicieuses
+        </h1>
+        <form action="">
+          <label for="search"></label>
+          <div class="appinput">
+            <input
+              type="text"
+              id="search"
+              class="search-bar"
+              placeholder="Rechercher une recette, un ingrédient..."
+            />
+            <i class="fa-solid fa-magnifying-glass search-glass"></i>
+          </div>
+        </form>
+
+        <ul id="result"></ul>
+      </div>
+    </header>
+    <main>
+      <div class="filters">
+        <select id="ingredients" class="filter1">
+          <option value="">Ingrédients</option>
+        </select>
+
+        <select id="appliances" class="filter1">
+          <option value="">Appareils</option>
+        </select>
+
+        <select id="ustensils" class="filter1">
+          <option value="">Ustensiles</option>
+        </select>
+        <div class="number">
+          <span id="nbrecipe"
+            >1500<!-- ici il faudra que je mette un JS pour le nombre affiché-->
+            recettes</span
+          >
+        </div>
+      </div>
+
+      <div id="recipes-container"></div>
+    </main>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
