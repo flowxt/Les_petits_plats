@@ -12,7 +12,6 @@ let filteredRecipes = recipes;
 // Fonction pour afficher les recettes
 function displayRecipes(recipesToDisplay) {
   recipesContainer.innerHTML = "";
-  // Va parcourir chaque recette à afficher grâce à ma boucle for
   for (let i = 0; i < recipesToDisplay.length; i++) {
     const recipe = recipesToDisplay[i];
     const recipeCard = document.createElement("div");
@@ -47,7 +46,7 @@ function updateRecipeCount(count) {
   nbRecipeSpan.textContent = `${count} recette${count > 1 ? "s" : ""}`;
 }
 
-// Filtre les recettes en fonction du texte de recherche (utilisant une boucle for)
+// Filtre les recettes en fonction du texte de recherche
 function filterRecipesByText(searchText) {
   const lowerSearchText = searchText.toLowerCase();
   const result = [];
@@ -72,7 +71,7 @@ function filterRecipesByText(searchText) {
   return result;
 }
 
-// Filtre les recettes en fonction des tags sélectionnés (utilisant une boucle for)
+// Filtre les recettes en fonction des tags sélectionnés
 function filterRecipesByTags(recipesToFilter) {
   const selectedIngredient = document
     .getElementById("ingredients")
@@ -146,9 +145,21 @@ function updateAvailableTags() {
 function updateSelect(selectId, options) {
   const select = document.getElementById(selectId);
   const currentValue = select.value;
-  select.innerHTML = `<option value="">${
-    selectId.charAt(0).toUpperCase() + selectId.slice(1)
-  }</option>`;
+
+  let label = "";
+  switch (selectId) {
+    case "ingredients":
+      label = "Ingrédients";
+      break;
+    case "appliances":
+      label = "Appareils";
+      break;
+    case "ustensils":
+      label = "Ustensiles";
+      break;
+  }
+
+  select.innerHTML = `<option value="">${label}</option>`;
   for (let i = 0; i < options.length; i++) {
     const optionElement = document.createElement("option");
     optionElement.value = options[i];
@@ -156,6 +167,36 @@ function updateSelect(selectId, options) {
     select.appendChild(optionElement);
   }
   select.value = currentValue;
+}
+
+// Fonction pour ajouter un tag
+function addTag(selectId, value) {
+  if (!value) return;
+
+  const tagContainer = document.getElementById(`selected-${selectId}`);
+  const existingTag = tagContainer.querySelector(`.tag[data-value="${value}"]`);
+  if (existingTag) return; // Évite les doublons
+
+  const tag = document.createElement("span");
+  tag.classList.add("tag");
+  tag.setAttribute("data-value", value);
+  tag.innerHTML = `
+      ${value}
+      <i class="fa-solid fa-xmark close-tag" data-select="${selectId}" data-value="${value}"></i>
+  `;
+  tagContainer.appendChild(tag);
+}
+
+// Fonction pour supprimer un tag
+function removeTag(selectId, value) {
+  const tagContainer = document.getElementById(`selected-${selectId}`);
+  const tag = tagContainer.querySelector(`.tag[data-value="${value}"]`);
+  if (tag) {
+    tag.remove();
+  }
+  const select = document.getElementById(selectId);
+  select.value = "";
+  performSearch(); // Relancer la recherche après avoir supprimé le tag
 }
 
 // Fonction principale de recherche
@@ -171,6 +212,16 @@ function performSearch() {
 
   displayRecipes(filteredRecipes);
   updateAvailableTags();
+
+  // Mettre à jour les tags pour les sélections actuelles
+  ["ingredients", "appliances", "ustensils"].forEach((selectId) => {
+    const select = document.getElementById(selectId);
+    const tagContainer = document.getElementById(`selected-${selectId}`);
+    tagContainer.innerHTML = ""; // Effacer les tags existants
+    if (select.value) {
+      addTag(selectId, select.value);
+    }
+  });
 }
 
 // Écouteurs d'événements
@@ -183,6 +234,15 @@ form.addEventListener("submit", function (e) {
 
 ["ingredients", "appliances", "ustensils"].forEach(function (selectId) {
   document.getElementById(selectId).addEventListener("change", performSearch);
+});
+
+// Écouteur d'événements pour la suppression des tags
+document.addEventListener("click", function (e) {
+  if (e.target.classList.contains("close-tag")) {
+    const selectId = e.target.dataset.select;
+    const value = e.target.dataset.value;
+    removeTag(selectId, value);
+  }
 });
 
 // Affichage initial

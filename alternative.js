@@ -111,16 +111,28 @@ function updateAvailableTags() {
 function updateSelect(selectId, options) {
   const select = document.getElementById(selectId);
   const currentValue = select.value;
-  select.innerHTML = `<option value="">${
-    selectId.charAt(0).toUpperCase() + selectId.slice(1)
-  }</option>`;
-  options.forEach((option) => {
+
+  let label = "";
+  switch (selectId) {
+    case "ingredients":
+      label = "Ingrédients";
+      break;
+    case "appliances":
+      label = "Appareils";
+      break;
+    case "ustensils":
+      label = "Ustensiles";
+      break;
+  }
+
+  select.innerHTML = `<option value="">${label}</option>`;
+  for (let i = 0; i < options.length; i++) {
     const optionElement = document.createElement("option");
-    optionElement.value = option;
-    optionElement.textContent = option;
+    optionElement.value = options[i];
+    optionElement.textContent = options[i];
     select.appendChild(optionElement);
-  });
-  select.value = currentValue; // Conserve la sélection actuelle si possible
+  }
+  select.value = currentValue;
 }
 
 //-----------------------------------------------------------------------------------------------

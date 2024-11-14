@@ -57,17 +57,27 @@
     </header>
     <main>
       <div class="filters">
-        <select id="ingredients" class="filter1">
-          <option value="">Ingrédients</option>
-        </select>
+        <div class="filter-group">
+          <select id="ingredients" class="filter1">
+            <option value="">Ingrédients</option>
+          </select>
+          <div id="selected-ingredients" class="selected-tags"></div>
+        </div>
 
-        <select id="appliances" class="filter1">
-          <option value="">Appareils</option>
-        </select>
+        <div class="filter-group">
+          <select id="appliances" class="filter1">
+            <option value="">Appareils</option>
+          </select>
+          <div id="selected-appliances" class="selected-tags"></div>
+        </div>
 
-        <select id="ustensils" class="filter1">
-          <option value="">Ustensiles</option>
-        </select>
+        <div class="filter-group">
+          <select id="ustensils" class="filter1">
+            <option value="">Ustensiles</option>
+          </select>
+          <div id="selected-ustensils" class="selected-tags"></div>
+        </div>
+
         <div class="number">
           <span id="nbrecipe"
             >1500<!-- ici il faudra que je mette un JS pour le nombre affiché-->

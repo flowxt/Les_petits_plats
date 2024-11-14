@@ -40,15 +40,21 @@ h1{
     width: 100%;
     margin-top: 30px;
     min-width: 800px;
-    
+    padding-left: 20px;
     height: 50px;
     
     border-radius: 10px;
     position: relative;
 }
+
+
 .number{
     margin-top: 20px;
     margin-right: 5px;
+    
+        flex-grow: 1; /* Pousse l'élément .number à droite */
+        text-align: right; /* Aligne le texte du nombre à droite */
+
 }
 
 .search-glass {
@@ -117,21 +123,56 @@ p.description {
 #recipes-container{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: flex-start;
+    gap: 80px;
+    margin: 0 90px;
     background: lightgrey;
 }
 
 .filters{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    margin: 0 40px;
 }
 .filter1{
   height: 40px;
    margin: 20px 30px;
    width: 200px;
-   border: 1px solid black;
+  border: none;
+  border-radius: 10px;
+   
   
 }
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  
+  .selected-tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 5px;
+    margin-left: 25px;
+    
+  }
+  
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    width: 200px;
+    padding: 10px 10px;
+    margin: 2px;
+    border-radius: 10px;
+    font-size: 14px;
+    background: #FFD15B;
+  }
+  
+  .close-tag {
+    cursor: pointer;
+    margin-left: auto;
+  }
+  
 #nbrecipe{
     font-size: 1.5rem;
     font-family: 'anton', sans-serif;
