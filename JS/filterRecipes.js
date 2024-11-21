@@ -21,13 +21,23 @@ function matchItems(recipeItems, selectedItems, comparisonType = "some") {
   }
 }
 
-// Fonction pour filtrer les recettes par texte
+// Fonction pour filtrer les recettes par texte (name et description uniquement)
+// Fonction pour échapper les caractères spéciaux dans le texte de recherche
+function sanitizeInput(input) {
+  const div = document.createElement("div");
+  div.textContent = input;
+  return div.innerHTML;
+}
+
+// Fonction pour filtrer les recettes par texte (name et description uniquement)
 export function filterRecipesByText(searchText, recipes) {
-  const lowerSearchText = searchText.toLowerCase();
+  // Assainir le texte de recherche pour éviter les balises malveillantes
+  const sanitizedSearchText = sanitizeInput(searchText).toLowerCase();
+
   return recipes.filter(
     (recipe) =>
-      recipe.name.toLowerCase().includes(lowerSearchText) ||
-      recipe.description.toLowerCase().includes(lowerSearchText)
+      recipe.name.toLowerCase().includes(sanitizedSearchText) ||
+      recipe.description.toLowerCase().includes(sanitizedSearchText)
   );
 }
 
@@ -39,28 +49,21 @@ export function filterRecipesByMultipleTags(
   selectedUtensils
 ) {
   return recipesToFilter.filter((recipe) => {
-    const ingredientMatch =
-      selectedIngredients.length === 0 ||
-      selectedIngredients.every((ing) =>
-        recipe.ingredients.some(
-          (recipeIng) =>
-            recipeIng.ingredient.toLowerCase() === ing.toLowerCase()
-        )
-      );
-
-    const applianceMatch =
-      selectedAppliances.length === 0 ||
-      selectedAppliances.some(
-        (app) => recipe.appliance.toLowerCase() === app.toLowerCase()
-      );
-
-    const utensilMatch =
-      selectedUtensils.length === 0 ||
-      selectedUtensils.every((ut) =>
-        recipe.ustensils.some(
-          (recipeUt) => recipeUt.toLowerCase() === ut.toLowerCase()
-        )
-      );
+    const ingredientMatch = matchItems(
+      recipe.ingredients.map((ing) => ing.ingredient),
+      selectedIngredients,
+      "every"
+    );
+    const applianceMatch = matchItems(
+      [recipe.appliance], // Normalisation des appareils en tableau
+      selectedAppliances,
+      "some"
+    );
+    const utensilMatch = matchItems(
+      recipe.ustensils,
+      selectedUtensils,
+      "every"
+    );
 
     return ingredientMatch && applianceMatch && utensilMatch;
   });
