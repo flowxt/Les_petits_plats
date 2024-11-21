@@ -46,6 +46,94 @@ h1{
     border-radius: 10px;
     position: relative;
 }
+.custom-select {
+    position: relative;
+    width: 200px;
+
+    
+    
+    
+  }
+  
+  .select-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+  }
+  
+  .arrow {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+  }
+  
+  .arrow.down {
+    border-top: 5px solid black;
+  }
+  
+  .arrow.up {
+    border-bottom: 5px solid black;
+  }
+  
+  .select-dropdown {
+    display: none;
+    position: absolute;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #ddd;
+    z-index: 1000;
+    border-radius: 0 0 20px 20px; /* Applique le border-radius uniquement en bas */
+    overflow: hidden;
+  }
+
+  .select-dropdown.show {
+    display: block;
+  }
+  
+  .input-container {
+    position: relative;
+  }
+  
+  .search-input {
+    width: calc(100% - 4px); /* Réduisez la largeur pour tenir compte de la marge */
+    padding: 12px;
+    padding-right: 40px; /* Ajoutez un padding à droite pour l'icône */
+    border: 1px solid #ddd; /* Ajoutez une bordure de 1px gris clair */
+    border-radius: 5px; /* Ajoutez un border-radius si nécessaire */
+    margin: 2px; /* Ajoutez une marge de 2px */
+    box-sizing: border-box; /* Assurez-vous que le padding est inclus dans la largeur totale */
+  }
+  
+  .search-icon {
+    position: absolute;
+    right: 12px; /* Ajustez la position de l'icône */
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+    pointer-events: none; /* Empêche l'icône d'interférer avec les clics dans l'input */
+  }
+  .options-list {
+    max-height: 200px;
+    overflow-y: auto;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 0 0 20px 20px; 
+  }
+  
+  .options-list li {
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .options-list li:hover {
+    background-color: #FFD15B;
+  }
 
 
 .number{
@@ -103,8 +191,7 @@ li{
 }
 ul{
     padding: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  
     padding-right: 5px;
 }
 p.description {
@@ -147,6 +234,8 @@ p.description {
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
+    margin-right: 50px;
+    margin-top: 20px;
   }
   
   .selected-tags {
@@ -154,7 +243,7 @@ p.description {
     flex-direction: column;
     flex-wrap: wrap;
     margin-top: 5px;
-    margin-left: 25px;
+    
     
   }
   
@@ -217,6 +306,11 @@ p.description {
     font-family: 'manrope', sans-serif;
     font-size: 0.9rem;
 
+
+}
+.recipe-content ul{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .unit{
