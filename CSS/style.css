@@ -154,12 +154,13 @@ h1{
     right: 5px; /* Positionne l'icône à droite de l'input */
     top: 69%; /* Centre l'icône verticalement */
     transform: translateY(-50%); /* Ajuste la position pour un centrage parfait */
-    pointer-events: none; /* Permet d'interagir avec l'input sans interférer avec l'icône */
+    /* pointer-events: none; Permet d'interagir avec l'input sans interférer avec l'icône */
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 25px;
+    cursor: pointer;
 }
 
 img {
@@ -291,6 +292,7 @@ p.description {
     width: 100%;
     max-width: 380px;   
     margin-top: 40px;
+    cursor: pointer;
     
 }
 
