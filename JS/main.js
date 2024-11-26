@@ -17,6 +17,7 @@ const nbRecipeSpan = document.getElementById("nbrecipe");
 let filteredRecipes = recipes;
 
 // Fonction de recherche principale
+// Fonction de recherche principale
 function performSearch() {
   const searchText = input.value.trim();
   let recipesToFilter = recipes;
@@ -46,8 +47,11 @@ function performSearch() {
   );
 
   // Affichage des recettes filtrées et mise à jour du compteur
-  displayRecipes(filteredRecipes, recipesContainer, (count) =>
-    updateRecipeCount(count, nbRecipeSpan)
+  displayRecipes(
+    filteredRecipes,
+    recipesContainer,
+    (count) => updateRecipeCount(count, nbRecipeSpan),
+    searchText // Passez searchText ici
   );
 
   // Mise à jour des tags disponibles
