@@ -31,14 +31,18 @@ function sanitizeInput(input) {
 export function filterRecipesByText(searchText, recipes) {
   // Assainir le texte de recherche pour éviter les balises malveillantes
   const sanitizedSearchText = sanitizeInput(searchText).toLowerCase();
+  // Mon tableau qui va stocker les recettes filtrées
   const filteredRecipes = [];
 
+  // Je parcours mes recettes avec la boucle for
   for (let i = 0; i < recipes.length; i++) {
     const recipe = recipes[i];
+    // Je vérifie si le nom ou la description de la recette contient le texte de recherche
     if (
       recipe.name.toLowerCase().includes(sanitizedSearchText) ||
       recipe.description.toLowerCase().includes(sanitizedSearchText)
     ) {
+      // Si oui j'ajoute la recette dans mon tableau filteredRecipes
       filteredRecipes.push(recipe);
     }
   }
